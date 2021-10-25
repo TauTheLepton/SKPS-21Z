@@ -12,7 +12,7 @@ Zadaniami na laboratorium były:
 
 # Przygotowanie stanowiska
 Stanowisko zostało przygotowane bez większych problemów, z efektem końcowym wyglądającym jak na zdjęciu przedstawionym w instrukcji:
-[](https://media.discordapp.net/attachments/784434620665954364/902290466609959012/unknown.png?width=1056&height=676)
+![](https://media.discordapp.net/attachments/784434620665954364/902290466609959012/unknown.png?width=1056&height=676)
 Podłączenie stanowiska zostało zweryfikowane przez prowadzącego.
 
 # Uruchomienie RPI
