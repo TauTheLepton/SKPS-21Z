@@ -1,0 +1,29 @@
+python3 -m http.server 8000
+
+wget https://downloads.openwrt.org/releases/21.02.1/targets/bcm27xx/bcm2711/openwrt-21.02.1-bcm27xx-bcm2711-rpi-4-ext4-factory.img.gz
+
+gzip -d openwrt-21.02.1-bcm27xx-bcm2711-rpi-4-ext4-factory.img.gz
+
+losetup -P -f openwrt-21.02.1-bcm27xx-bcm2711-rpi-4-ext4-factory.img; losetup -l
+
+zrobiliśmy, bo czemu nie, na przypale albo wcale
+
+dd if=/dev/loop0p1 of=/dev/mmcblk0p3 bs=4096
+
+dd if=/dev/loop0p2 of=/dev/mmcblk0p4 bs=4096
+
+resize2fs /dev/mmcblk0p4
+
+sfdisk -d /dev/mmcblk0 > tp
+
+weszło łatwo
+
+sfdisk --no-reread /dev/mmcblk0 < tp1
+
+vi /etc/config/network
+
+/etc/init.d/network reload
+
+Tu sie okazalo ze nasza raspberka ustawia sama sb jako hosta
+
+echo 16 > /sys/class/gpio/export  lub unexport
