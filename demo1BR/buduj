@@ -1,0 +1,12 @@
+#!/bin/sh
+# Poniższą ścieżkę trzeba dostosować do położenia
+# BR na Państwa stacji roboczej
+BRPATH=/tmp/BR/buildroot-2021.08.1
+(
+export PATH=$BRPATH/output/host/usr/bin:$PATH
+# Poniższe ustawienia są dla Virt64 
+# dla RPi4 mogą wymagać zmiany
+make ARCH=aarch64 CROSS_COMPILE=\
+aarch64-none-linux-gnu- demo1
+)
+

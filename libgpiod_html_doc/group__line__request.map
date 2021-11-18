@@ -1,0 +1,4 @@
+<map id="Line requests" name="Line requests">
+<area shape="rect" id="node1" title="Interface for requesting GPIO lines from userspace for both values and events." alt="" coords="196,5,296,31"/>
+<area shape="rect" id="node2" href="$group__lines.html" title="Functions and data structures dealing with GPIO lines." alt="" coords="5,5,148,31"/>
+</map>

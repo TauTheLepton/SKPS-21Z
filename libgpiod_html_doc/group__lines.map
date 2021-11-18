@@ -1,0 +1,10 @@
+<map id="GPIO line operations" name="GPIO line operations">
+<area shape="rect" id="node1" href="$group__line__config.html" title="Functions allowing modification of config options of GPIO lines requested from user&#45;space." alt="" coords="196,5,361,31"/>
+<area shape="rect" id="node2" href="$group__line__request.html" title="Interface for requesting GPIO lines from userspace for both values and events." alt="" coords="229,55,329,80"/>
+<area shape="rect" id="node3" href="$group__line__value.html" title="Functions allowing to read and set GPIO line values for single lines and in bulk." alt="" coords="204,105,353,145"/>
+<area shape="rect" id="node4" title="Functions and data structures dealing with GPIO lines." alt="" coords="5,169,148,195"/>
+<area shape="rect" id="node5" href="$group__line__misc.html" title="Functions that didn&#39;t fit anywhere else." alt="" coords="213,169,344,195"/>
+<area shape="rect" id="node6" href="$group__line__bulk.html" title="Convenience data structures and helper functions for storing and operating on multiple lines at once." alt="" coords="206,219,351,259"/>
+<area shape="rect" id="node7" href="$group__line__event.html" title="Structures and functions allowing to poll lines for events and read them, both for individual lines a..." alt="" coords="209,284,349,309"/>
+<area shape="rect" id="node8" href="$group__line__info.html" title="Definitions and functions for retrieving kernel information about both requested and free lines." alt="" coords="243,333,314,359"/>
+</map>

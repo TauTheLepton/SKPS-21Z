@@ -1,0 +1,13 @@
+config BR2_PACKAGE_DEMO1
+	bool "demo1"
+	depends on BR2_TOOLCHAIN_HAS_THREADS
+	
+	help
+	  Simple multithreaded applicatiom
+
+	  http://elka.pw.edu.pl
+
+comment "demo1 requires pthreads library"
+        depends on !BR2_TOOLCHAIN_HAS_THREADS
+
+

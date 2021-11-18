@@ -1,0 +1,4 @@
+<map id="Setting line configuration" name="Setting line configuration">
+<area shape="rect" id="node1" title="Functions allowing modification of config options of GPIO lines requested from user&#45;space." alt="" coords="196,5,361,31"/>
+<area shape="rect" id="node2" href="$group__lines.html" title="Functions and data structures dealing with GPIO lines." alt="" coords="5,5,148,31"/>
+</map>

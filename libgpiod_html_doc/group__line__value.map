@@ -1,0 +1,4 @@
+<map id="Reading &amp; setting line values" name="Reading &amp; setting line values">
+<area shape="rect" id="node1" title="Functions allowing to read and set GPIO line values for single lines and in bulk." alt="" coords="196,5,345,45"/>
+<area shape="rect" id="node2" href="$group__lines.html" title="Functions and data structures dealing with GPIO lines." alt="" coords="5,13,148,38"/>
+</map>

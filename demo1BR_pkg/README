@@ -1,0 +1,9 @@
+Proszę skopiować ten katalog, do katalogu, w którym został rozpakowany Buildroot.
+Następnie podkatalog package/demo1 proszę skopiować do katalogu package w BR.
+W zbiorze package/Config.in w BR proszę przed ostatnią linią "endmenu" dodać linie:
+########## Początek dodanych linii #########
+menu "Experiments"
+	source "package/demo1/Config.in"
+endmenu
+########## Koniec dodanych linii #########
+

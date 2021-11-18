@@ -1,0 +1,4 @@
+<map id="Line events handling" name="Line events handling">
+<area shape="rect" id="node1" href="$group__lines.html" title="Functions and data structures dealing with GPIO lines." alt="" coords="5,5,148,31"/>
+<area shape="rect" id="node2" title="Structures and functions allowing to poll lines for events and read them, both for individual lines a..." alt="" coords="196,5,336,31"/>
+</map>
