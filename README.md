@@ -13,7 +13,7 @@ Zadaniami na laboratorium były:
 ## Przygotowanie stanowiska
 Stanowisko zostało przygotowane bez większych problemów, z efektem końcowym wyglądającym jak na zdjęciu przedstawionym w instrukcji:
 
-![](https://media.discordapp.net/attachments/784434620665954364/902290466609959012/unknown.png?width=1056&height=676)
+![](https://media.discordapp.net/attachments/784434620665954364/902290466609959012/unknown.png)
 
 Podłączenie stanowiska zostało zweryfikowane przez prowadzącego.
 
@@ -69,32 +69,6 @@ obraz Linuxa został załadowany na RPI. Zostały zmienione jego zmienne środow
 
 Plik Image został skopiowany na RPI, po czym ów komputer został zrebootowany. U-boot został wprowadzony w tryb interaktywny.
 
-
-
-
-fdt addr $fdt_addr
-fdt get value bootargs_org /chosen
-setenv bootargs $bootargs_org
-
-
-printenv bootargs
-
-bootargs
-
-BR/.config
-
-
-
-
-
-sudo dd if=rootfs.ext4 of=/dev/mmcblk0p4
-
-wget https://10.42.0.1/rootfs/.......
-
-root=/dev/mmcblk0p4
-
-
-
 # Dokumentacja laboratorium 2
 4.11.2021
 
@@ -106,3 +80,16 @@ Pythona
 
 ## OpenWRT
 Najnowsza wersja OpenWRT została zainstalowana na urządzeniu Raspberry Pi 4 z adresu podanego w instrukcji do laboratorium. Został w tym celu wykorzystany system ratunkowy Raspbian. Potrzebna do tego była modyfikacja tablicy partycji, ponieważ w swoim stanie podstawowym zostałby jedynie uruchomiony system ratunkowy. Dzieje się tak, ponieważ program ładujący Raspberry Pi dostosowuje DT do Raspbiana i Buildroota, podczas gdy OpenWRT nie jest kompatybilny z tymi ustawieniami. Po zamianie linijek w pliku konfiguracyjnym należało zrestartować system. Wówczas objawił się nam system OpenWRT. Aby uzyskać dostęp do sieci, a zarazem instalacji programów (np. edytorów, z których wiadomo jak wyjść), należało dokonać edycji pliku konfiguracyjnego. Sekcja device została usunięta, zaś konfiguracja interfejsu "lan" została dostosowana do naszych potrzeb poprzez usunięcie wybranych linijek oraz alterację pozostałych. Sieć następnie została zrestartowana, po czym system OpenWRT był już gotów na kolejne wyzwania.
+
+# Dokumantacja laboratorium 3
+26.11.2021
+
+## Zadanie
+### Treść
+Na tym laboratorium postawionym przed nami zadaniem było uruchomienie buzzera pasywnego. Jednak tym razem trudność na tym, że nie mieliśmy wgrać zwykłego skryptu w języku `Python`, a mieliśmy za zadanie napisać program w `C` i stworzyć paczkę w systemie SDK zawierającą ten program.
+
+### Paczki SDK - wyjaśnienie
+Takie podejście, podczas rozwijania swojego programu w `C`, jest wygodne, ponieważ gdy chcemy przetestować nasze rozwiązanie na rzeczysiwtym sprzęcie, to nie musimy budować obrazu systemu od zera razem z tym programem, tylko możemy dodać do obrazu tą paczkę, bez ponownej kompilacji systemu. Szczególnie kiedy chcemy rozwiązać jakiś problem i mamy potrzebę wgrywać nowe wersje programu na sprzęt (w naszym wypadku Raspberry Pi 4) raz za razem, to za każdym razem czekać aż się skompilje cały system może zdecydowanie wydłużyć czas pracy i spowodować dużą irytację developera.
+
+## Nasza praca na laboratorium
+Nasze prace zaczęliśmy od napisania prostego programu w `C`, któy by emitował jakiś dźwięk przy pomoce wcześnie wspomnianego buzzera pasywnego. Następnie, po paru nieudanych próbach, udało nam się zbudować paczkę SDK zawierającą nasz program.
