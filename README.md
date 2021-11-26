@@ -90,10 +90,10 @@ W języku `Python` został napisany skrypt `dioda.py` służący do sterowania d
 26.11.2021
 
 ## Treść
-Celem laboratorium 3 było uruchomienie buzzera pasywnego. Jednak tym razem trudność na tym, że nie mieliśmy wgrać zwykłego skryptu w języku `Python`, a mieliśmy za zadanie napisać program w `C` i stworzyć paczkę w systemie SDK zawierającą ten program.
+Celem laboratorium 3 było uruchomienie buzzera pasywnego. Jednak tym razem trudność polegała na tym, że skrypt nie miał być napisany w języku `Python`, a w `C`, co oznaczało dodatkową kompilację programu stworzyć paczkę w systemie SDK zawierającą ten program.
 
 ## Paczki SDK - wyjaśnienie
-Takie podejście, podczas rozwijania swojego programu w `C`, jest wygodne, ponieważ, aby przetestować nasze rozwiązanie na rzeczywistym sprzęcie, to nie ma potrzeby budowania obrazu systemu od zera razem z tym programem, tylko można dodać do obrazu samą paczkę, bez ponownej kompilacji systemu. Szczególnie kiedy chcemy rozwiązać jakiś problem i mamy potrzebę wgrywać nowe wersje programu na sprzęt (w naszym wypadku Raspberry Pi 4) raz za razem, to za każdym razem czekać aż się skompilje cały system może zdecydowanie wydłużyć czas pracy i spowodować dużą irytację developera.
+Takie podejście, podczas rozwijania swojego programu w `C`, jest wygodne, ponieważ, aby przetestować rozwiązanie na rzeczywistym sprzęcie, nie ma potrzeby budowania obrazu systemu od zera razem z tym programem. Zamiast tego można dodać do obrazu samą paczkę, bez ponownej kompilacji systemu. Ma to szczególne znaczenie, kiedy wystąpi jakiś problem wywołujący potrzebę ponownego wgrania plików na sprzęt (w naszym wypadku Raspberry Pi 4) raz za razem. Bez SDK za każdym razem trzeba by było czekać, aż skompiluje się cały system, co może zdecydowanie wydłużyć czas pracy i spowodować dużą irytację developera.
 
 ## Praca na laboratorium
-Nasze prace zaczęliśmy od napisania prostego programu w `C`, któy by emitował jakiś dźwięk przy pomocy wspomnianego buzzera pasywnego. Następnie, po paru nieudanych próbach, udało nam się zbudować paczkę SDK zawierającą nasz program.
+Nasze prace zaczęliśmy od napisania prostego programu w `C`, któy by emitował jakiś dźwięk przy pomocy wspomnianego buzzera pasywnego. Następnie, po paru nieudanych próbach, udało nam się zbudować paczkę SDK zawierającą nasz program. Wybrany został wariant > pozytywka
