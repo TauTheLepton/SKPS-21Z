@@ -84,17 +84,16 @@ Pythona
 Najnowsza wersja OpenWRT została zainstalowana na urządzeniu Raspberry Pi 4 z adresu podanego w instrukcji do laboratorium. Został w tym celu wykorzystany system ratunkowy Raspbian. Potrzebna do tego była modyfikacja tablicy partycji, ponieważ w swoim stanie podstawowym zostałby jedynie uruchomiony system ratunkowy. Dzieje się tak, ponieważ program ładujący Raspberry Pi dostosowuje DT do Raspbiana i Buildroota, podczas gdy OpenWRT nie jest kompatybilny z tymi ustawieniami. Po zamianie linijek w pliku konfiguracyjnym należało zrestartować system. Wówczas objawił się nam system OpenWRT. Aby uzyskać dostęp do sieci, a zarazem instalacji programów (np. edytorów, z których wiadomo jak wyjść), należało dokonać edycji pliku konfiguracyjnego. Sekcja `device` została usunięta, zaś konfiguracja interfejsu `lan` została dostosowana do naszych potrzeb poprzez usunięcie wybranych linijek oraz alterację pozostałych. Sieć następnie została zrestartowana, po czym system OpenWRT był już gotów na kolejne wyzwania.
 
 ## Obsługa akcesoriów przez GPIO
-W języku `Python` został napisany skrypt `dioda.py` służący do sterowania diodą LED. Na początku został on skonfigurowany tak, by dioda migała z określonym interwałem, następnie zaś skrypt został zmodyfikowany tak, by dioda płynnie zmieniała swoją jasność. Zostało to przeprowadzone poprzez stopniową zmianę częstotliwości migania diody. W obu przypadkach należało jednak najpierw przygotować środowisko OpenWRT do przyjęcia programu w `Pythonie`. Pierwszym krokiem potrzebnym do tego celu było zainstalowanie `Pythona` oraz pakietu `pip` za pomocą menedżera pakietów `opkg`. Z pomocą zainstalowanego już pakietu `pip` możliwa była instalacja kolejnego pakietu `Pythona` o nazwie gpio4.
+W języku `Python` został napisany skrypt `dioda.py` służący do sterowania diodą LED. Na początku został on skonfigurowany tak, by dioda migała z określonym interwałem, następnie zaś skrypt został zmodyfikowany tak, by dioda płynnie zmieniała swoją jasność. Zostało to przeprowadzone poprzez stopniową zmianę częstotliwości migania diody. W obu przypadkach należało jednak najpierw przygotować środowisko OpenWRT do przyjęcia programu w `Pythonie`. Pierwszym krokiem potrzebnym do tego celu było zainstalowanie `Pythona` oraz pakietu `pip` za pomocą menedżera pakietów `opkg`. Z pomocą zainstalowanego już pakietu `pip` możliwa była instalacja kolejnego pakietu `Pythona` o nazwie gpio4. Wówczas zostało zaobserwowane poprawne działanie obu programów.
 
 # Dokumantacja laboratorium 3
 26.11.2021
 
-## Zadanie
-### Treść
-Na tym laboratorium postawionym przed nami zadaniem było uruchomienie buzzera pasywnego. Jednak tym razem trudność na tym, że nie mieliśmy wgrać zwykłego skryptu w języku `Python`, a mieliśmy za zadanie napisać program w `C` i stworzyć paczkę w systemie SDK zawierającą ten program.
+## Treść
+Celem laboratorium 3 było uruchomienie buzzera pasywnego. Jednak tym razem trudność na tym, że nie mieliśmy wgrać zwykłego skryptu w języku `Python`, a mieliśmy za zadanie napisać program w `C` i stworzyć paczkę w systemie SDK zawierającą ten program.
 
-### Paczki SDK - wyjaśnienie
-Takie podejście, podczas rozwijania swojego programu w `C`, jest wygodne, ponieważ gdy chcemy przetestować nasze rozwiązanie na rzeczysiwtym sprzęcie, to nie musimy budować obrazu systemu od zera razem z tym programem, tylko możemy dodać do obrazu tą paczkę, bez ponownej kompilacji systemu. Szczególnie kiedy chcemy rozwiązać jakiś problem i mamy potrzebę wgrywać nowe wersje programu na sprzęt (w naszym wypadku Raspberry Pi 4) raz za razem, to za każdym razem czekać aż się skompilje cały system może zdecydowanie wydłużyć czas pracy i spowodować dużą irytację developera.
+## Paczki SDK - wyjaśnienie
+Takie podejście, podczas rozwijania swojego programu w `C`, jest wygodne, ponieważ, aby przetestować nasze rozwiązanie na rzeczywistym sprzęcie, to nie ma potrzeby budowania obrazu systemu od zera razem z tym programem, tylko można dodać do obrazu samą paczkę, bez ponownej kompilacji systemu. Szczególnie kiedy chcemy rozwiązać jakiś problem i mamy potrzebę wgrywać nowe wersje programu na sprzęt (w naszym wypadku Raspberry Pi 4) raz za razem, to za każdym razem czekać aż się skompilje cały system może zdecydowanie wydłużyć czas pracy i spowodować dużą irytację developera.
 
-## Nasza praca na laboratorium
-Nasze prace zaczęliśmy od napisania prostego programu w `C`, któy by emitował jakiś dźwięk przy pomoce wcześnie wspomnianego buzzera pasywnego. Następnie, po paru nieudanych próbach, udało nam się zbudować paczkę SDK zawierającą nasz program.
+## Praca na laboratorium
+Nasze prace zaczęliśmy od napisania prostego programu w `C`, któy by emitował jakiś dźwięk przy pomocy wspomnianego buzzera pasywnego. Następnie, po paru nieudanych próbach, udało nam się zbudować paczkę SDK zawierającą nasz program.
