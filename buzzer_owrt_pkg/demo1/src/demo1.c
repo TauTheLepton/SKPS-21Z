@@ -6,6 +6,7 @@
 #include <gpiod.h>
 
 const unsigned int pin_buzzer = 12;
+const char *chip_name = "gpiochip0";
 // int koniec = 0;
 // pthread_t pid1, pid2;
 
@@ -34,21 +35,27 @@ int main(int argc, char *argv[])
     // pthread_create(&pid2,NULL,drukuj2,NULL);
     // pthread_join(pid1,NULL);
     // pthread_join(pid2,NULL);
-    struct gpiod_chip *chip;
+    struct gpiod_chip *gpio_chip0 = gpiod_chip_open_by_name(chip_name);
+    if(gpio_chip0 == NULL)
+    {
+        printf("chip not found!");
+        return 0;
+    }
     struct gpiod_line *buzz;
-    buzz = gpiod_chip_get_line(chip, pin_buzzer);
+    buzz = gpiod_chip_get_line(gpio_chip0, pin_buzzer);
     gpiod_line_request_output(buzz, "example1", 0);
     int intensity;
     // pinMode(pinPWM, PWM_OUTPUT);
-    float time = 1000;
+    float time = 1;
+    float range = 1000;
     while(1)
     {
-        for(intensity=1; intensity<1000; intensity++)
+        for(intensity=1; intensity<range; intensity++)
         {
             gpiod_line_set_value(buzz, 1);
             usleep(time*intensity);
             gpiod_line_set_value(buzz, 0);
-            usleep(time*(1000-intensity));
+            usleep(time*(range-intensity));
         }
     }
     return 0;

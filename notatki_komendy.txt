@@ -1,0 +1,16 @@
+# notatki
+rozpakować sdk w tmp
+scripts/feeds update
+scripts/feeds install libgpiod
+scripts/feeds install -p skps -a
+make menuconfig
+make package/libgpiod/compile
+make package/demo1/compile
+
+python3 -m http.server
+
+rm demo1_1.0-1_aarch64_cortex-a72.ipk 
+opkg remove demo1
+wget http://10.42.0.1:8000/demo1_1.0-1_aarch64_cortex-a72.ipk
+opkg install demo1_1.0-1_aarch64_cortex-a72.ipk
+demo1
