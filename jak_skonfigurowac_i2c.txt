@@ -1,0 +1,10 @@
+mount
+less /boot/config.txt
+lsmod | grep i2c
+opkg search *i2c*
+kluczowe dopiero odtad:
+opkg install kmod-i2c-core
+for i in /sys/firmware/devicetree/base/soc/i2c* ; do echo $i ; cat $i;status ; done 
+(szukamy "enabled")
+cat /sys/firmware/devicetree/base/aliases/i2c1
+opkg install kmod-i2c-bcm2835
