@@ -14,9 +14,9 @@ To zadanie polegało na generacji dźwięku, w naszym przypadku źródłem sygna
 Ten sam kod znajduje się również w pliku `buzzer.c`.
 Pełna dokumentacja tego zadania najduje się w pliku [lab3.md](lab3.md).
 
-Ostatnim zadaniem jakie wykonaliśmy było wykonanie projektu.
+Ostatnim zadaniem ukończonym w ramach zajęć laboratoryjnych było wykonanie projektu.
 Rozwiązanie tego zadania znajduje się w pliku `projekt.py`.
-Pełna dokumentacja tego zadania najduje się poniżej.
+Pełna dokumentacja tego zadania znajduje się poniżej.
 
 ## Opis projektu
 Projekt miał na celu połączenie działania czujnika pulsu oraz efektorów w postaci trzech diod LED o różnych kolorach oraz buzzera pasywnego.
@@ -29,24 +29,24 @@ Ostatni z tych elemetów miał za zadanie dać możliwość monitorowania wielu 
 W programie w języku Python wykorzystane zostały biblioteki `gpiod`, `multiprocessing`, `time` oraz `max30105`.
 Ta pierwsza wykorzystana została w celu komunikacji z wyprowadzeniami GPIO.
 Biblioteki `time` oraz `multiprocessing` posłużyły do obsługi buzzera pasywnego.
+
 Pierwsza z nich została wykorzystana przy generacji programowego sygnału PWM przekazywanego do brzęczyka, zaś użycie drugiej pozwoliło na wykorzystanie wielu procesów w realizacji programu, dzięki czemu działanie buzzera nie zatrzymywało działania LEDów czy czujnika MAX30105.
 Zostało w tym celu wybrane rozwiązanie wieloprocesowe, a nie np. wielowątkowe, ponieważ zapewniało ono ciągłość działania programu.
-Było to kluczowe, gdyż programowa implementacja generacji sygnału PWM wiązała się z bardzo dużym zużyciem czasu procesora, co powodowało nieciągłą pracę systemu.
-Komunikacja z procesem działającym w tle i generującym odpowiedni dźwięk przy pomocy programowej generacji fali PWM o odpowiednim wypełnieniu została przeprowadzona przy pomocy kolejki.
-W niej każda wiadomość zawierała dwa pola.
+Było to kluczowe, gdyż programowa implementacja generacji sygnału PWM wiązała się z bardzo dużym zużyciem czasu procesora, co powodowało nieciągłą pracę systemu, gdyż przy rozwiązaniu wielowątkowym wszystkie wątki działały na jednym procesorze, co sprawiało, że bywał on przeciążony.
+Komunikacja z procesem działającym w tle i generującym odpowiedni dźwięk przy pomocy programowej generacji fali PWM o odpowiednim wypełnieniu została przeprowadzona przy pomocy kolejki, w której każda wiadomość zawierała dwa pola.
 Pierwsze było typu `bool` i zawierało wiadomość, czy ostatnio została odczytana nowa wartość tętna.
-Kolejne pole natomiast zawierała wartość uderzeń na minutę (jeżeli ostatnio nie został zarejestrowany nowy odczyt to powielana była wartoścz poprzedniego dokonanego odczytu.
+Kolejne pole natomiast zawierało wartość podaną w uderzeniach na minutę (jeżeli przy ostatniej próbie nie został zarejestrowany nowy odczyt, to powielana była wartość z ostatniego pomyślnego odczytu).
 
-Biblioteka `max30105` z kolei pozwoliła nam na uproszczoną obsługę czujnika MAX30105.
-Zdecydowaliśmy sie na wykorzystanie go, ponieważ czujnik ten komunikował sie poprzez protokół **I2C**.
+Biblioteka `max30105` pozwoliła nam na uproszczoną obsługę czujnika MAX30105.
+Zdecydowaliśmy sie na wykorzystanie tego czujnika, ponieważ komunikował się on z urządzeniem *Raspberry Pi* poprzez protokół **I2C**.
 Podjęliśmy próby samodzielnego ustanowienia komunikacji z czujnikiem przy użyciu tego protokołu, ale okazało się to wykraczać poza nasze możliwości.
 Z tego też powodu nasza implementacja zakończyła się na etapie stworzenia programu w języku *Python*.
 
 ## Realizacja (sprzęt)
 Wykorzystanym czujnikiem pulsu był wielofunkcyjny czujnik cząsteczek MAX30105.
 Działa on na zasadzie świecenia na daną powierzchnię światłem z różnych diod i obserwacji światła odbitego.
-Po analizie wyników można odczytac tętno, sprawdzić stężenie dymu w powietrzu i wiele innych ciekawych rzeczy.
-Nasze użycie tego czujnika ograniczało sie jedynie do odczytu tętna badanego obiektu.
+Po analizie wyników można odczytać tętno, sprawdzić stężenie dymu w powietrzu, jak i dokonywać innych ciekawych pomiarów.
+Nasze użycie tego czujnika ograniczało się jedynie do odczytu tętna badanego obiektu.
 
 Całość projektu wyglądała następująco:
 
@@ -60,11 +60,10 @@ Dokładny schemat połączeń został pokazany poniżej:
 
 ### Uwaga do realizacji sprzętowej
 Jesteśmy świadomi, że podpięliśmy zasilanie czujnika opisanego jako 5V do wyprowadzenia 3.3V na komputerze jednopłytkowym *Raspberry Pi*.
-Przed użyciem czujnika dużo czytaliśmy o nim na forach internetowych i dowiedzieliśmy się, że źle on (jak i *Raspberry PI*) znosi zasilanie ze źródła 5V.
-Dowiedzieliśmy się również, że przez to nie będzie działać dioda zielona, ale ponieważ nas do odczytu tętna interesowały jedynia dioda czerwona i świata podczerwonego to postanowiliśmy zastosowac się do tej rekomendacji w obawie przed uszkodzneiem czujnika.
+Przed użyciem czujnika dużo czytaliśmy o nim na forach internetowych i dowiedzieliśmy się, że podpięcie go do zasilania 5V na płytce *Raspberry Pi* może się źle skończyć tak dla samego czujnika jak i (co gorsza) dla *Raspberry Pi*.
+Dowiedzieliśmy się również, że przez to nie będzie działać dioda zielona czujnika `MAX30105`, ale, ponieważ nas do odczytu tętna interesowały jedynie dioda czerwona i świata podczerwonego, postanowiliśmy zastosować się do tej rekomendacji w obawie przed uszkodzeniem czujnika.
 
 ## Testy
-<!-- TODO dokończyć testy -->
 Testy przebiegały poprzez uruchomienie programu i przyłożenie palca żywego człowieka do czujnika MAX30105. Aby wywołać odczyty wykraczające poza "zdrowy" zakres, palec lekko odrywano, dzięki czemu czujnik nie potrafił zebrać poprawnego odczytu.
 
 Pierwszym zaprezentowanym odczytem jest odczyt "zdrowy" - w zakresie między 50 bpm a 130 bpm.
