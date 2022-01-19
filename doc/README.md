@@ -67,6 +67,14 @@ Dowiedzieliśmy się również, że przez to nie będzie działać dioda zielona
 <!-- TODO dokończyć testy -->
 Testy przebiegały poprzez uruchomienie programu i przyłożenie palca żywego człowieka do czujnika MAX30105. Aby wywołać odczyty wykraczające poza "zdrowy" zakres, palec lekko odrywano, dzięki czemu czujnik nie potrafił zebrać poprawnego odczytu.
 
+Pierwszym zaprezentowanym odczytem jest odczyt "zdrowy" - w zakresie między 50 bpm a 130 bpm.
+Zgodnie z przewidywaniami zapaliła się czerwona dioda (efekt widoczny na zdjęciu poniżej), zaś buzzer wybrzmiał dźwiękiem o wysokiej częstotliwości (1.2 kHz).
 ![Czerwona dioda](images/czerwona.jpg)
+
+W drugiej kolejności przetestowany został odczyt bliski zerowemu ( $\leqslant$ 10 bpm).
+Wówczas, zgodnie z założeniami, zapaliła się dioda zielona, a brzęczyk wydał dźwięk o niskiej częstotliwości (600 Hz).
 ![Zielona dioda](images/zielona.jpg)
+
+Na koniec przetestowana została reakcja na odczyt o "niezdrowej" wartości, nieznajdującej się we wcześniej wymienionych zakresach.
+Rezultatem było widoczne światło bijące od niebieskiej diody oraz dźwięk buzzera o umiarkowanej częstotliwości (900 Hz).
 ![Niebieska dioda](images/niebieska.jpg)
