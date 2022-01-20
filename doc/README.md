@@ -58,6 +58,17 @@ Dokładny schemat połączeń został pokazany poniżej:
 
 ![Schemat](images/circuit.png)
 
+Pełna lista komponentów wykorzystanych w projekcie to:
+- *Raspberry Pi* 4 (wraz ze wszystkimi kablami potrzebnymi do zasilenia oraz poprawnego podłączenia do komputera będącego hostem)
+- wielofunkcyjny czujnik cząsteczek MAX30105
+- 3 diody LED
+    - zielona
+    - niebieska
+    - czerwona
+- 3 oporniki 1 kOhm
+- 1 opornik 330 Ohm
+- 9 kabli "żeńsko-męskich"
+
 ### Uwaga do realizacji sprzętowej
 Jesteśmy świadomi, że podpięliśmy zasilanie czujnika opisanego jako 5V do wyprowadzenia 3.3V na komputerze jednopłytkowym *Raspberry Pi*.
 Przed użyciem czujnika dużo czytaliśmy o nim na forach internetowych i dowiedzieliśmy się, że podpięcie go do zasilania 5V na płytce *Raspberry Pi* może się źle skończyć tak dla samego czujnika jak i (co gorsza) dla *Raspberry Pi*.
@@ -77,3 +88,8 @@ Wówczas, zgodnie z założeniami, zapaliła się dioda zielona, a brzęczyk wyd
 Na koniec przetestowana została reakcja na odczyt o "niezdrowej" wartości, nieznajdującej się we wcześniej wymienionych zakresach.
 Rezultatem było widoczne światło bijące od niebieskiej diody oraz dźwięk buzzera o umiarkowanej częstotliwości (900 Hz).
 ![Niebieska dioda](images/niebieska.jpg)
+
+## Instrukcja uruchomienia
+Aby uruchomić program i przetestować go na własną rękę należy, po poprawnym podłączeniu całego układu, uruchomić serwer na komputerze będącym hostem, za pomocą komendy `python3 -m http.server`.
+Następnie, już na *Raspberry Pi*, należy pobrać plik `projekt.py` za pomocą komendy `wget http://<adres_ip_hosta>/projekt.py`.
+Ostatnią komendą potrzebną do uruchomienia programu jest komenda włączająca sam program w języku Python: `python3 projekt.py`.
