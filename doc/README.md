@@ -21,7 +21,7 @@ Pełna dokumentacja tego zadania znajduje się poniżej.
 ## Opis projektu
 Projekt miał na celu połączenie działania czujnika pulsu oraz efektorów w postaci trzech diod LED o różnych kolorach oraz buzzera pasywnego.
 Po odczytaniu "zdrowej" wartości pulsu (tj. między 50 bpm a 130 bpm) zapalała się dioda czerwona.
-Gdy wartość była bliska zeru ( $\leqslant$ 10 bpm), zapalała się zielona dioda, zaś w pozostałych przypadkach świeciła się dioda niebieska.
+Gdy wartość była bliska zeru (<= 10 bpm), zapalała się zielona dioda, zaś w pozostałych przypadkach świeciła się dioda niebieska.
 Po każdym pomyślnym odczytaniu wartości przez czujnik uruchamiany był buzzer pasywny, który wydawał dźwięk o częstotliwości zależnej od wartości odczytu.
 Ostatni z tych elemetów miał za zadanie dać możliwość monitorowania wielu stanowisk pomiarowych na raz, na przykład w szpitalu, żeby pielęgniarka mogła nasłuchiwać sygnałów od wielu pacjentów i gdy usłyszy odpowiednio inny dźwięk mogła zareagować.
 
@@ -70,7 +70,7 @@ Pierwszym zaprezentowanym odczytem jest odczyt "zdrowy" - w zakresie między 50 
 Zgodnie z przewidywaniami zapaliła się czerwona dioda (efekt widoczny na zdjęciu poniżej), zaś buzzer wybrzmiał dźwiękiem o wysokiej częstotliwości (1.2 kHz).
 ![Czerwona dioda](images/czerwona.jpg)
 
-W drugiej kolejności przetestowany został odczyt bliski zerowemu ( $\leqslant$ 10 bpm).
+W drugiej kolejności przetestowany został odczyt bliski zerowemu ( <= 10 bpm).
 Wówczas, zgodnie z założeniami, zapaliła się dioda zielona, a brzęczyk wydał dźwięk o niskiej częstotliwości (600 Hz).
 ![Zielona dioda](images/zielona.jpg)
 
